@@ -15,11 +15,14 @@ provider:
   stage: ${self:custom.conf.variant}
   stackTags:
     'testtag:user': tco
-  variableSyntax: "\\${((?=self:|env:|opt:|ssm:|s3:|cf:|deep:|file\\()[ ~:a-zA-Z0-9._\\'\",\\-\\/\\(\\)]+?)}"
 
 functions:
+  LambdaTest1:
+    name: lambda-${self:custom.conf.variant}-helloW-1
+    handler: lambda/helloworld.handler
+    runtime: python3.6
 
-  LambdaTest:
-    name: lambda-${self:custom.conf.variant}-helloW
+  LambdaTest2:
+    name: lambda-${self:custom.conf.variant}-helloW-2
     handler: lambda/helloworld.handler
     runtime: python3.6
