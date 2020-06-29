@@ -21,5 +21,5 @@ functions:
 
   LambdaTest:
     name: lambda-${self:custom.conf.variant}-helloW
-    handler: demo-lambda/python/helloworld.py
+    handler: demo-lambda/python/lambda/helloworld.py
     runtime: python3.6
