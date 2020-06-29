@@ -1,6 +1,11 @@
 pipeline {
-   agent { label 'demolinuxagent' }
-
+   agent {
+        docker { 
+            image 'node:latest'
+            label 'demolinuxagent'
+            args '-u root'
+        }
+    }
    stages {
          stage('Build') {
              steps {
