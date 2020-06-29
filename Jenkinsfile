@@ -1,4 +1,5 @@
 pipeline {
+
    agent {
         docker { 
             image 'node:latest'
@@ -6,34 +7,30 @@ pipeline {
             args '-u root'
         }
     }
+
    stages {
-         stage('Build') {
+         stage('Deploy lambdas') {
              steps {
                  script {
-                     sh '''
-                        npm install --global npm@6 serverless@12
-                     '''
+                     withAWS(credentials:'jenkins') {
+                         sh '''
+                            npm install -g serverless
+                            git clone https://github.com/ThomasTCO/repo-testAws.git test_tco
+                            cd test_tco
+                            sh 'src/scripts/deploy.sh'
+                         '''
+                     }
                  }
                 echo 'Building...'
                 sleep(5)
              }
          }
-         stage('Stage release') {
-             steps {
-                echo 'Deploy...'
-                sleep(5)
-                script {
-                  sh '''
-                    sh 'src/demo-lambda/python/scripts/deploy.sh'
-                  '''
-                }
-             }
-         }
-         stage('Deploy') {
-             steps {
-                echo 'Deployment to dev...'
-                sleep(5)
-             }
-         }
+    }
+    post {
+        always { 
+            script {
+                sh 'rm -r test_tco'
+            }
+        }
     }
 }
