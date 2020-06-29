@@ -1,0 +1,35 @@
+pipeline {
+   agent { label 'demolinuxagent' }
+
+   stages {
+         stage('Build') {
+             steps {
+                 script {
+                     sh '''
+                        npm config set unsafe-perm true && \
+                        npm install --global npm@6 serverless@12
+                     '''
+                 }
+                echo 'Building...'
+                sleep(5)
+             }
+         }
+         stage('Stage release') {
+             steps {
+                echo 'Deploy...'
+                sleep(5)
+                script {
+                  sh '''
+                    sh 'src/demo-lambda/python/scripts/deploy.sh dependencies $STATIC_TARGET'
+                  '''
+                }
+             }
+         }
+         stage('Deploy') {
+             steps {
+                echo 'Deployment to dev...'
+                sleep(5)
+             }
+         }
+    }
+}

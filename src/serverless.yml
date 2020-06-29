@@ -1,0 +1,25 @@
+service: stack-lab-lambda-tco
+frameworkVersion: ">=1.2.0 <2.0.0"
+
+custom:
+  conf:
+    userenv: ${opt:userenv, 'unknown'}
+    profile: ${opt:profile,'unknown'}
+    variant: ${opt:variant,'stable'}
+    deploymentbucket: tco-s3
+
+provider:
+  name: aws
+  region: eu-west-3
+  deploymentBucket: ${self:custom.conf.deploymentbucket}
+  stage: ${self:custom.conf.variant}
+  stackTags:
+    'testtag:user': tco
+  variableSyntax: "\\${((?=self:|env:|opt:|ssm:|s3:|cf:|deep:|file\\()[ ~:a-zA-Z0-9._\\'\",\\-\\/\\(\\)]+?)}"
+
+#functions:
+#
+#  LambdaTest:
+#    name: lambda-${self:custom.conf.variant}-helloW
+#    handler: demo-lambda/python/helloworld.py
+#    runtime: python3.6
