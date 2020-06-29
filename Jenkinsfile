@@ -11,7 +11,6 @@ pipeline {
              steps {
                  script {
                      sh '''
-                        npm config set unsafe-perm true && \
                         npm install --global npm@6 serverless@12
                      '''
                  }
@@ -25,7 +24,7 @@ pipeline {
                 sleep(5)
                 script {
                   sh '''
-                    sh 'src/demo-lambda/python/scripts/deploy.sh dependencies $STATIC_TARGET'
+                    sh 'src/demo-lambda/python/scripts/deploy.sh'
                   '''
                 }
              }
