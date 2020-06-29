@@ -19,10 +19,10 @@ provider:
 functions:
   LambdaTest1:
     name: lambda-${self:custom.conf.variant}-helloW-1
-    handler: lambda/helloworld.handler
+    handler: lambda-test-1/helloworld.handler
     runtime: python3.6
 
   LambdaTest2:
     name: lambda-${self:custom.conf.variant}-helloW-2
-    handler: lambda/helloworld.handler
+    handler: lambda-test-2/helloworld.handler
     runtime: python3.6
