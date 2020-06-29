@@ -7,7 +7,7 @@ custom:
     profile: ${opt:profile,'unknown'}
     variant: ${opt:variant,'stable'}
     deploymentbucket: tco-s3
-    name: lambda-test2
+    name: lambda-test1
 
 provider:
   name: aws
