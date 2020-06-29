@@ -1,4 +1,4 @@
-def helloworld(event, context):
+def handler(event, context):
     message = 'Hello world!'  
     return { 
         'message' : message

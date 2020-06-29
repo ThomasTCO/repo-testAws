@@ -3,7 +3,6 @@
 set -e
 
 WORKDIR=$(pwd)
-NUM_COMPTE='284952015401'
 
 
 echo "Deploying Hello World..."
