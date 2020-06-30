@@ -17,7 +17,7 @@ provider:
 
 functions:
   LambdaTest1:
-    name: lambda-${self:custom.conf.variant}-helloW-1
+    name: lambda-${self:custom.conf.userenv}-helloW-1
     handler: lambda-test1/helloworld.handler
     runtime: python3.6
 
