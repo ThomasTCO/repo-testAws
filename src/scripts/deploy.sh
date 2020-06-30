@@ -10,7 +10,7 @@ echo "Deploying Lambdas 1 & 2"
 cd $WORKDIR/src/demo-lambda/python/
 for lambda in $(ls .); do
     echo "Deploying $lambda"
-    sls deploy --variant lab --statictarget $STATIC_TAR --datatype $lambda
+    sls deploy --variant lab --statictarget $STATIC_TAR --object $lambda
 done
 
 
