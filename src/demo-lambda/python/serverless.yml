@@ -22,6 +22,6 @@ functions:
     runtime: python3.6
 
   LambdaTest2:
-    name: lambda-${self:custom.conf.variant}-helloW-2
+    name: lambda-${self:custom.conf.userenv}-helloW-2
     handler: lambda-test2/helloworld.handler
     runtime: python3.6
