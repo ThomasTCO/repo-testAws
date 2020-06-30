@@ -1,14 +1,11 @@
-service: stack-${self:custom.conf.variant}-${self:custom.conf.name}-${self:custom.conf.object}
+service: stack-${self:custom.conf.userenv}-${self:custom.conf.name}
 frameworkVersion: ">=1.2.0 <2.0.0"
 
 custom:
   conf:
     userenv: ${opt:userenv, 'unknown'}
-    profile: ${opt:profile,'unknown'}
-    variant: ${opt:variant,'stable'}
     deploymentbucket: tco-s3
-    name: lambda-test
-    object: ${opt:object,'--object_missing'}
+    name: ${opt:name,'noname'}
 
 provider:
   name: aws
