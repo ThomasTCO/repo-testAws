@@ -1,4 +1,4 @@
-service: stack-${self:custom.conf.variant}-${self:custom.conf.name}-tco
+service: stack-${self:custom.conf.variant}-${self:custom.conf.name}-${self:custom.conf.object}
 frameworkVersion: ">=1.2.0 <2.0.0"
 
 custom:
@@ -7,7 +7,8 @@ custom:
     profile: ${opt:profile,'unknown'}
     variant: ${opt:variant,'stable'}
     deploymentbucket: tco-s3
-    name: lambda-test2
+    name: lambda-test
+    object: ${opt:object,'--object_missing'}
 
 provider:
   name: aws
@@ -18,7 +19,12 @@ provider:
     'testtag:user': tco
 
 functions:
+  LambdaTest1:
+    name: lambda-${self:custom.conf.variant}-helloW-1
+    handler: lambda-test1/helloworld.handler
+    runtime: python3.6
+
   LambdaTest2:
     name: lambda-${self:custom.conf.variant}-helloW-2
-    handler: helloworld.handler
+    handler: lambda-test2/helloworld.handler
     runtime: python3.6
