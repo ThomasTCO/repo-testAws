@@ -19,7 +19,6 @@ pipeline {
                  withAWS(credentials:'jenkins') {
                      sh '''
                         npm install -g serverless
-                        cd test_tco
                         sh 'src/scripts/deploy.sh'
                      '''
                  }
