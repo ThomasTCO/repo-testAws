@@ -34,10 +34,10 @@ pipeline {
 
             script {
                 if(currentBuild.result == 'SUCCESS') {
-                    notifications 'Lambdas well deployed on AWS!'
+                    notifications 'Lambdas well deployed on AWS'
                 }
                 else {
-                    notifications 'Problem when deploying Lambdas on AWS!'
+                    notifications 'Problem when deploying Lambdas on AWS'
                 }
             }
 
