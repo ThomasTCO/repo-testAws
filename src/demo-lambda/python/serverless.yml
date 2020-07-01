@@ -11,7 +11,6 @@ provider:
   name: aws
   region: eu-west-3
   deploymentBucket: ${self:custom.conf.deploymentbucket}
-  stage: ${self:custom.conf.variant}
   stackTags:
     'testtag:user': tco
 
