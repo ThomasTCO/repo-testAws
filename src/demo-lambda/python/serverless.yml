@@ -15,12 +15,15 @@ provider:
     'testtag:user': tco
 
 functions:
-  LambdaTest1:
-    name: lambda-${self:custom.conf.userenv}-helloW-1
-    handler: lambda-test1/helloworld.handler
-    runtime: python3.6
+  - ${file(./functions/services.yml)}
 
-  LambdaTest2:
-    name: lambda-${self:custom.conf.userenv}-helloW-2
-    handler: lambda-test2/helloworld.handler
-    runtime: python3.6
+#functions:
+#  LambdaTest1:
+#    name: lambda-${self:custom.conf.userenv}-helloW-1
+#    handler: lambda-test1/helloworld.handler
+#    runtime: python3.6
+
+#  LambdaTest2:
+#    name: lambda-${self:custom.conf.userenv}-helloW-2
+#    handler: lambda-test2/helloworld.handler
+#    runtime: python3.6
