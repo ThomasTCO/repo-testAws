@@ -29,12 +29,6 @@ pipeline {
     }
     post {
         always { 
-            script {
-                sh '''
-                    rm -r test_tco
-                '''
-            }
-
             test 'Serverless'
 
             script {
