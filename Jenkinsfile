@@ -12,11 +12,13 @@ pipeline {
 
    stages {
          stage('Deploy lambdas') {
+             when {
+                branch 'master'
+             }
              steps {
                  withAWS(credentials:'jenkins') {
                      sh '''
                         npm install -g serverless
-                        git clone https://github.com/ThomasTCO/repo-testAws.git test_tco
                         cd test_tco
                         sh 'src/scripts/deploy.sh'
                      '''
