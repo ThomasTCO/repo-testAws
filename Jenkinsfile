@@ -29,6 +29,7 @@ pipeline {
     }
     post {
         always { 
+
             test 'Serverless'
 
             script {
