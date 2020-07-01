@@ -12,6 +12,9 @@ pipeline {
 
    stages {
          stage('Deploy lambdas') {
+             environment {
+                NUM_GIT_COMMIT = sh(returnStdout: true, script: "git log -n 1 --pretty=format:'%h'").trim()
+             }
              steps {
                  withAWS(credentials:'jenkins') {
                      sh '''
@@ -21,6 +24,10 @@ pipeline {
                  }
                 echo 'Building...'
                 sleep(5)
+
+                script {
+                    currentBuild.displayName = "commit : " + $NUM_GIT_COMMIT
+                }
              }
          }
     }
