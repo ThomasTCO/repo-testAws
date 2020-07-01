@@ -41,7 +41,7 @@ pipeline {
             // Archive the built artifacts
             script {
                 NUM_GIT_COMMIT = sh(returnStdout: true, script: "git log -n 1 --pretty=format:'%h'").trim()
-                sh 'echo "Num commit: " + $NUM_GIT_COMMIT > num_commit.txt'
+                sh 'echo "Num commit: " ${NUM_GIT_COMMIT} > num_commit.txt'
                 archiveArtifacts artifacts: 'num_commit.txt'
             }
         }
