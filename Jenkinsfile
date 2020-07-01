@@ -12,9 +12,6 @@ pipeline {
 
    stages {
          stage('Deploy lambdas') {
-             environment {
-                NUM_GIT_COMMIT = sh(returnStdout: true, script: "git log -n 1 --pretty=format:'%h'").trim()
-             }
              steps {
                  withAWS(credentials:'jenkins') {
                      sh '''
@@ -24,10 +21,6 @@ pipeline {
                  }
                 echo 'Building...'
                 sleep(5)
-
-                script {
-                    currentBuild.displayName = "commit : " + $NUM_GIT_COMMIT
-                }
              }
          }
     }
@@ -46,8 +39,9 @@ pipeline {
             }
 
             // Archive the built artifacts
-            sh 'echo "Test archive" > text.txt'
-            archiveArtifacts artifacts: 'text.txt'
+            NUM_GIT_COMMIT = sh(returnStdout: true, script: "git log -n 1 --pretty=format:'%h'").trim()
+            sh 'echo $NUM_GIT_COMMIT > num_commit.txt'
+            archiveArtifacts artifacts: 'num_commit.txt'
         }
     }
 }
