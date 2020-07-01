@@ -12,6 +12,9 @@ pipeline {
 
    stages {
          stage('Deploy lambdas') {
+             when {
+                branch 'dev'
+             }
              steps {
                  withAWS(credentials:'jenkins') {
                      sh '''
