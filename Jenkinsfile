@@ -11,7 +11,7 @@ pipeline {
     }
 
    stages {
-         stage('Deploy lambdas on dev test') {
+         stage('Deploy lambdas on dev') {
              when {
                 branch 'dev'
              }
