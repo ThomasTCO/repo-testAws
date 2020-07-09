@@ -11,7 +11,7 @@ pipeline {
     }
 
    stages {
-         stage('Deploy lambdas') {
+         stage('Deploy lambdas test') {
              steps {
                  withAWS(credentials:'jenkins') {
                      sh '''
