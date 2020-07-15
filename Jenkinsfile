@@ -14,7 +14,6 @@ pipeline {
                  withAWS(credentials:'gekko-cicd') {
                      sh '''
                         npm install -g serverless
-                        sh 'src/scripts/deploy.sh'
                      '''
                  }
                 echo 'Building...'
