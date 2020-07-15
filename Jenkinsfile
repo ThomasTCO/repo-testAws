@@ -9,7 +9,7 @@ pipeline {
     }
 
    stages {
-         stage('Deploy lambdas on dev teet') {
+         stage('Deploy lambdas on dev') {
              when {
                 branch 'dev'
              }
@@ -17,7 +17,6 @@ pipeline {
                  withAWS(credentials:'jenkins') {
                      sh '''
                         npm install -g serverless
-                        sh 'src/scripts/deploy.sh'
                      '''
                  }
                 echo 'Building...'
