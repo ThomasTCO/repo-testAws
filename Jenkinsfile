@@ -1,5 +1,3 @@
-@Library('pipeline-library-demo@master')_
-
 pipeline {
 
     agent {
