@@ -9,6 +9,12 @@ pipeline {
     }
 
    stages {
+        stage('Test whatever the branch') {
+             steps {
+                echo 'Testting...'
+                sleep(10)
+             }
+         }
          stage('Deploy lambdas on dev') {
              when {
                 branch 'dev'
