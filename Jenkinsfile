@@ -2,10 +2,10 @@
 
 pipeline {
 
-   agent {
+    agent {
         docker { 
-            image 'node:latest'
-            label 'demolinuxagent'
+            image '000134115625.dkr.ecr.eu-west-3.amazonaws.com/serverless-docker:1.0.0'
+            label 'ec2-linux'
             args '-u root'
         }
     }
