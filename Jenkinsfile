@@ -9,7 +9,24 @@ pipeline {
     }
 
    stages {
-         stage('Deploy lambdas') {
+         stage('Deploy lambdas on dev') {
+             when {
+                branch 'dev'
+             }
+             steps {
+                 withAWS(credentials:'jenkins') {
+                     sh '''
+                        npm install -g serverless
+                     '''
+                 }
+                echo 'Building...'
+                sleep(5)
+             }
+         }
+         stage('Deploy lambdas on prod') {
+             when {
+                branch 'master'
+             }
              steps {
                  withAWS(credentials:'gekko-cicd') {
                      sh '''
