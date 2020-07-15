@@ -15,6 +15,17 @@ pipeline {
                 sleep(10)
              }
          }
+         stage('Just for PR') {
+             when {
+                expression {
+                    return env.BRANCH_NAME.startsWith('PR');
+                }
+             }
+             steps {
+                echo 'PR work...'
+                sleep(5)
+             }
+         }
          stage('Deploy lambdas on dev') {
              when {
                 branch 'dev'
